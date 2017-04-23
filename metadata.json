@@ -1,0 +1,15 @@
+{
+  "_generated": "xiaoguang wang",
+  "description": "Add undecorate item in window menu",
+  "name": "undecorate",
+  "original-authors": [
+    "sun.wxg@gmail.com"
+  ],
+  "shell-version": [
+    "3.20",
+    "3.22"
+  ],
+  "url": "https://github.com/sunwxg/gnome-shell-extension-undecorate",
+  "uuid": "undecorate@sun.wxg@gmail.com", 
+  "version": 1
+}
