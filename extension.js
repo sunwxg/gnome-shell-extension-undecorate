@@ -12,25 +12,28 @@ let new_buildMenu = function(window) {
 
 	this.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
-	this.addAction(_("Decorade"), Lang.bind(this, function(event) {
-			let ID = activeWindowId();
-			if (window.decorated) {
-				decorate();
-			} else {
-				undecorate();
-			}
-
-			//activeWindow(ID);
-	}));
+	if (window.decorated) {
+		this.addAction(_("Undecorate"), Lang.bind(this, function(event) {
+						//let ID = activeWindowId();
+						undecorate();
+						//activeWindow(ID);
+		}));
+	} else {
+		this.addAction(_("Decorate"), Lang.bind(this, function(event) {
+						//let ID = activeWindowId();
+						decorate();
+						//activeWindow(ID);
+		}));
+	}
 };
 
-function decorate() {
+function undecorate() {
 	GLib.spawn_command_line_sync('xprop -id ' + activeWindowId()
 			+ ' -f _MOTIF_WM_HINTS 32c -set'
 			+ ' _MOTIF_WM_HINTS "0x2, 0x0, 0x0, 0x0, 0x0"');
 }
 
-function undecorate() {
+function decorate() {
 	GLib.spawn_command_line_sync('xprop -id ' + activeWindowId()
 			+ ' -f _MOTIF_WM_HINTS 32c -set'
 			+ ' _MOTIF_WM_HINTS "0x2, 0x0, 0x1, 0x0, 0x0"');
