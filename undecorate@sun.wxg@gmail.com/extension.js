@@ -13,34 +13,51 @@ let new_buildMenu = function(window) {
 
     this.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
+    let item = {};
     if (window.decorated) {
-        this.addAction(_("Undecorate"), Lang.bind(this, function(event) {
+        item = this.addAction(_("Undecorate"), Lang.bind(this, function(event) {
             undecorate();
             windowGetFocus(window);
         }));
     } else {
-        this.addAction(_("Decorate"), Lang.bind(this, function(event) {
+        item = this.addAction(_("Decorate"), Lang.bind(this, function(event) {
             decorate();
             windowGetFocus(window);
         }));
     }
+    if (window.get_window_type() == Meta.WindowType.DESKTOP)
+        item.setSensitive(false);
 };
 
 function undecorate() {
-    GLib.spawn_command_line_sync('xprop -id ' + activeWindowId()
-        + ' -f _MOTIF_WM_HINTS 32c -set'
-        + ' _MOTIF_WM_HINTS "0x2, 0x0, 0x0, 0x0, 0x0"');
+    try {
+        GLib.spawn_command_line_sync('xprop -id ' + activeWindowId()
+            + ' -f _MOTIF_WM_HINTS 32c -set'
+            + ' _MOTIF_WM_HINTS "0x2, 0x0, 0x0, 0x0, 0x0"');
+    } catch(e) {
+        log(e);
+    }
 }
 
 function decorate() {
-    GLib.spawn_command_line_sync('xprop -id ' + activeWindowId()
-        + ' -f _MOTIF_WM_HINTS 32c -set'
-        + ' _MOTIF_WM_HINTS "0x2, 0x0, 0x1, 0x0, 0x0"');
+    try {
+        GLib.spawn_command_line_sync('xprop -id ' + activeWindowId()
+            + ' -f _MOTIF_WM_HINTS 32c -set'
+            + ' _MOTIF_WM_HINTS "0x2, 0x0, 0x1, 0x0, 0x0"');
+    } catch(e) {
+        log(e);
+    }
 }
 
 function activeWindowId() {
-    let [,out,,] = GLib.spawn_command_line_sync("xdotool getactivewindow");
-    return out.toString();
+    let result = [];
+    try {
+        result = GLib.spawn_command_line_sync("xdotool getactivewindow");
+    } catch(e) {
+        log(e);
+        return;
+    }
+    return result[1].toString()
 }
 
 function windowGetFocus(window) {
