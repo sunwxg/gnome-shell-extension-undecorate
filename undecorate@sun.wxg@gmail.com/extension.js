@@ -5,7 +5,6 @@ const PopupMenu = imports.ui.popupMenu;
 const WindowMenu = imports.ui.windowMenu.WindowMenu;
 
 let old_buildMenu = {};
-let maxID = null, unmaxID = null;
 
 let new_buildMenu = function(window) {
     let old = Lang.bind(this, old_buildMenu);
@@ -76,16 +75,8 @@ function init() {
 
 function enable() {
     WindowMenu.prototype._buildMenu = new_buildMenu;
-
-    //maxID = global.window_manager.connect('maximize', decorate);
-    //unmaxID = global.window_manager.connect('unmaximize', undecorate);
 }
 
 function disable() {
     WindowMenu.prototype._buildMenu = old_buildMenu;
-
-    //if (maxID)
-    //global.window_manager.disconnect(maxID);
-    //if (unmaxID)
-    //global.window_manager.disconnect(unmaxID);
 }
