@@ -10,3 +10,5 @@ Now only work on X11. Later will support wayland.
 ## Requires
 
 * xdotool
+
+![screenshot](/Screenshot_altspace.png)
