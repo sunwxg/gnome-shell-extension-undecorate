@@ -15,12 +15,12 @@ let new_buildMenu = function(window) {
     let item = {};
     if (window.decorated) {
         item = this.addAction(_("Undecorate"), Lang.bind(this, function(event) {
-            undecorate();
+            undecorate(window);
             windowGetFocus(window);
         }));
     } else {
         item = this.addAction(_("Decorate"), Lang.bind(this, function(event) {
-            decorate();
+            decorate(window);
             windowGetFocus(window);
         }));
     }
@@ -28,9 +28,9 @@ let new_buildMenu = function(window) {
         item.setSensitive(false);
 };
 
-function undecorate() {
+function undecorate(window) {
     try {
-        GLib.spawn_command_line_sync('xprop -id ' + activeWindowId()
+        GLib.spawn_command_line_sync('xprop -id ' + activeWindowId(window)
             + ' -f _MOTIF_WM_HINTS 32c -set'
             + ' _MOTIF_WM_HINTS "0x2, 0x0, 0x0, 0x0, 0x0"');
     } catch(e) {
@@ -38,9 +38,9 @@ function undecorate() {
     }
 }
 
-function decorate() {
+function decorate(window) {
     try {
-        GLib.spawn_command_line_sync('xprop -id ' + activeWindowId()
+        GLib.spawn_command_line_sync('xprop -id ' + activeWindowId(window)
             + ' -f _MOTIF_WM_HINTS 32c -set'
             + ' _MOTIF_WM_HINTS "0x2, 0x0, 0x1, 0x0, 0x0"');
     } catch(e) {
@@ -48,15 +48,13 @@ function decorate() {
     }
 }
 
-function activeWindowId() {
-    let result = [];
+function activeWindowId(window) {
     try {
-        result = GLib.spawn_command_line_sync("xdotool getactivewindow");
+        return parseInt(window.get_description(), 16);
     } catch(e) {
         log(e);
         return;
     }
-    return result[1].toString()
 }
 
 function windowGetFocus(window) {

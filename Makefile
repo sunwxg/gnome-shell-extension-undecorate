@@ -1,8 +1,6 @@
 
 submit:
-	cd undecorate@sun.wxg@gmail.com/ && zip -r ~/switchWorkspace.zip *
+	cd undecorate@sun.wxg@gmail.com/ && gnome-extensions pack --force
 
 install:
-	rm -rf ~/.local/share/gnome-shell/extensions/undecorate@sun.wxg@gmail.com
-	cp -r undecorate@sun.wxg@gmail.com ~/.local/share/gnome-shell/extensions/
-
+	gnome-extensions install --force ./undecorate@sun.wxg@gmail.com/undecorate@sun.wxg@gmail.com.shell-extension.zip
