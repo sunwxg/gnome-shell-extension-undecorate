@@ -1,4 +1,3 @@
-const Lang = imports.lang;
 const GLib = imports.gi.GLib;
 const Meta = imports.gi.Meta;
 const PopupMenu = imports.ui.popupMenu;
@@ -7,22 +6,22 @@ const WindowMenu = imports.ui.windowMenu.WindowMenu;
 let old_buildMenu = {};
 
 let new_buildMenu = function(window) {
-    let old = Lang.bind(this, old_buildMenu);
+    let old = old_buildMenu.bind(this);
     old(window);
 
     this.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
     let item = {};
     if (window.decorated) {
-        item = this.addAction(_("Undecorate"), Lang.bind(this, function(event) {
+        item = this.addAction(_("Undecorate"), (event) => {
             undecorate(window);
             windowGetFocus(window);
-        }));
+        });
     } else {
-        item = this.addAction(_("Decorate"), Lang.bind(this, function(event) {
+        item = this.addAction(_("Decorate"), (event) => {
             decorate(window);
             windowGetFocus(window);
-        }));
+        });
     }
     if (window.get_window_type() == Meta.WindowType.DESKTOP)
         item.setSensitive(false);
