@@ -1,6 +1,6 @@
 {
   "_generated": "xiaoguang wang",
-  "description": "Add undecorate item in window menu. You can undecorate window. Require 'xdotool' tool.",
+  "description": "Add undecorate item in window menu. You can undecorate window.",
   "name": "Undecorate Window",
   "original-authors": [
     "sun.wxg@gmail.com"
