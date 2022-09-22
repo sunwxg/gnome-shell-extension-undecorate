@@ -8,7 +8,8 @@
   "shell-version": [
     "40",
     "41",
-	"42"
+	"42",
+	"43"
   ],
   "url": "https://github.com/sunwxg/gnome-shell-extension-undecorate",
   "uuid": "undecorate@sun.wxg@gmail.com", 
