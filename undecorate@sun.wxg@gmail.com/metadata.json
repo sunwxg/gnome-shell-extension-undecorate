@@ -6,10 +6,7 @@
     "sun.wxg@gmail.com"
   ],
   "shell-version": [
-    "40",
-    "41",
-	"42",
-	"43"
+    "44"
   ],
   "url": "https://github.com/sunwxg/gnome-shell-extension-undecorate",
   "uuid": "undecorate@sun.wxg@gmail.com", 

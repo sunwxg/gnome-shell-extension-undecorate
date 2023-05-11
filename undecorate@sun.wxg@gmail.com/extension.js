@@ -57,13 +57,11 @@ function activeWindowId(window) {
 }
 
 function windowGetFocus(window) {
-    Meta.later_add(Meta.LaterType.IDLE, function () {
-        if (window.focus) {
-            window.focus(global.get_current_time());
-        } else {
-            window.activate(global.get_current_time());
-        }
-    });
+    if (window.focus) {
+        window.focus(global.get_current_time());
+    } else {
+        window.activate(global.get_current_time());
+    }
 }
 
 function init() {
