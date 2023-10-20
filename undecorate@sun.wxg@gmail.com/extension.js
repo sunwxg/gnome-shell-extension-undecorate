@@ -1,9 +1,12 @@
-const GLib = imports.gi.GLib;
-const Meta = imports.gi.Meta;
-const PopupMenu = imports.ui.popupMenu;
-const WindowMenu = imports.ui.windowMenu.WindowMenu;
+import GLib from 'gi://GLib';
+import Meta from 'gi://Meta';
 
-let old_buildMenu = {};
+import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
+
+import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
+import * as WindowMenu from 'resource:///org/gnome/shell/ui/windowMenu.js';
+
+let old_buildMenu;
 
 let new_buildMenu = function(window) {
     let old = old_buildMenu.bind(this);
@@ -64,14 +67,18 @@ function windowGetFocus(window) {
     }
 }
 
-function init() {
-    old_buildMenu = WindowMenu.prototype._buildMenu;
-}
+export default class UndecorateExtension extends Extension {
+    constructor(metadata) {
+        super(metadata);
 
-function enable() {
-    WindowMenu.prototype._buildMenu = new_buildMenu;
-}
+        old_buildMenu = WindowMenu.WindowMenu.prototype._buildMenu;
+    }
 
-function disable() {
-    WindowMenu.prototype._buildMenu = old_buildMenu;
+    enable() {
+        WindowMenu.WindowMenu.prototype._buildMenu = new_buildMenu;
+    }
+
+    disable() {
+        WindowMenu.WindowMenu.prototype._buildMenu = old_buildMenu;
+    }
 }
