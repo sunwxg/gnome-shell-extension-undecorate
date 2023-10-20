@@ -36,7 +36,7 @@ function undecorate(window) {
             + ' -f _MOTIF_WM_HINTS 32c -set'
             + ' _MOTIF_WM_HINTS "0x2, 0x0, 0x0, 0x0, 0x0"');
     } catch(e) {
-        log(e);
+        console.error(e);
     }
 }
 
@@ -46,7 +46,7 @@ function decorate(window) {
             + ' -f _MOTIF_WM_HINTS 32c -set'
             + ' _MOTIF_WM_HINTS "0x2, 0x0, 0x1, 0x0, 0x0"');
     } catch(e) {
-        log(e);
+        console.error(e);
     }
 }
 
@@ -54,7 +54,7 @@ function activeWindowId(window) {
     try {
         return parseInt(window.get_description(), 16);
     } catch(e) {
-        log(e);
+        console.error(e);
         return;
     }
 }
