@@ -5,7 +5,8 @@
     "name": "Undecorate Window",
     "description": "Add undecorate item in window menu. Use ALT+Space to show window menu.",
     "shell-version": [
-        "45"
+        "45",
+        "46"
     ],
     "original-authors": "sun.wxg@gmail.com",
     "url": "https://github.com/sunwxg/gnome-shell-extension-undecorate"
