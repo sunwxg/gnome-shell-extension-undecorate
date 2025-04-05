@@ -1,0 +1,12 @@
+{
+  "uuid": "undecorate-with-whitelist@4fort",
+  "extension-id": "undecorate-with-whitelist",
+  "gettext-domain": "gnome-shell-extensions",
+  "name": "Undecorate Window with Whitelist",
+  "description": "Add undecorate item in window menu. Use ALT+Space to show window menu.",
+  "shell-version": ["45", "46", "47", "48"],
+  "original-authors": "4fort",
+  "settings-schema": "org.gnome.shell.extensions.undecorate-with-whitelist",
+  "url": "https://github.com/4fort/undecorate-with-whitelist",
+  "version": 1
+}

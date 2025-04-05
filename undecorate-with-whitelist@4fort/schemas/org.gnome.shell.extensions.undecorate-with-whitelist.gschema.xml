@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.undecorate-with-whitelist" path="/org/gnome/shell/extensions/undecorate-with-whitelist/">
+    <!-- You can remove these example keys if not needed -->
+    <!-- 
+    <key name="example-switch" type="b">
+      <default>true</default>
+      <summary>Example switch preference</summary>
+      <description>An example toggle switch setting</description>
+    </key>
+    <key name="example-text" type="s">
+      <default>''</default>
+      <summary>Example text preference</summary>
+      <description>An example text input setting</description>
+    </key>
+    <key name="example-int" type="i">
+      <default>0</default>
+      <summary>Example integer preference</summary>
+      <description>An example integer setting</description>
+    </key>
+    -->
+    
+    <key name="window-whitelist" type="as">
+      <default>[]</default>
+      <summary>Whitelist of window WM_CLASS values</summary>
+      <description>List of applications that should always have undecorated windows</description>
+    </key>
+  </schema>
+</schemalist>
