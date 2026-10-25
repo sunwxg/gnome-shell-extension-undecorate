@@ -1,5 +1,5 @@
 {
-    "uuid": "undecorate@sun.wxg@gmail.com", 
+    "uuid": "undecorate@sun.wxg@gmail.com",
     "extension-id": "undecorate",
     "gettext-domain": "gnome-shell-extensions",
     "name": "Undecorate Window",
@@ -10,7 +10,8 @@
         "47",
         "48",
         "49",
-        "50"
+        "50",
+        "51"
     ],
     "original-authors": "sun.wxg@gmail.com",
     "url": "https://github.com/sunwxg/gnome-shell-extension-undecorate"
